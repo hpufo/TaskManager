@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import {url} from '../config';
-import styles from '../scss/Task.scss';
+import styles from '../../scss/Task.scss';
 
 class Task extends Component{
   constructor(props){

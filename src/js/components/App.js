@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {url} from './config';
-import TaskForm from './components/TaskForm';
-import TaskList from './components/TaskList';
-import styles from './scss/App.scss';
+import {url} from '../config';
+import TaskForm from './TaskForm';
+import TaskList from './TaskList';
+import styles from '../../scss/App.scss';
 
 class App extends Component {
   constructor(props){

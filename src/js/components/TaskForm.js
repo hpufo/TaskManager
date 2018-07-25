@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
-import styles from '../scss/TaskForm.scss';
+import styles from '../../scss/TaskForm.scss';
 import {url} from '../config';
 
 const initialState = {
