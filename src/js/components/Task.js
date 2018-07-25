@@ -23,7 +23,6 @@ class Task extends Component{
       .catch((e) => console.log('problem deleting'));   //Todo
   }
   render(){
-    console.log(this.props.task._id);
     let {completed,name,description,due} = this.props.task;
     return (
       <div className={styles.task}>
