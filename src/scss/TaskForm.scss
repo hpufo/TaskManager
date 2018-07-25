@@ -1,0 +1,38 @@
+//Todo figure out importing from node_modules
+//@import "~react-datepicker/dist/react-datepicker.css";
+.taskForm{
+  display: flex;
+  flex-direction: column;
+  max-width: 200px;
+  margin: auto;
+}
+.taskName, .dueDate{
+  display: flex;
+  flex-direction: row;
+}
+.name{
+  width: 55%;
+}
+.date{
+  display: inline-block;
+  width: 75px;
+}
+.formLabel{
+
+}
+.description{
+  height: 100px;
+}
+.button{
+  color: white;
+  padding: 6px;
+  //float: right;
+  min-width: 90px;
+  border: 1px solid black;
+  background-color: #2B78E4;
+  margin: auto;
+  border: {
+    style: none;
+    radius: 5px;
+  };
+}
