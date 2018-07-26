@@ -1,5 +1,17 @@
 //Todo figure out importing from node_modules
 //@import "~react-datepicker/dist/react-datepicker.css";
+@mixin button(){
+  color: white;
+  padding: 6px;
+  //float: right;
+  min-width: 90px;
+  border: 1px solid black;
+  background-color: #2B78E4;
+  border: {
+    style: none;
+    radius: 5px;
+  };
+}
 .taskForm{
   display: flex;
   flex-direction: column;
@@ -24,15 +36,12 @@
   height: 100px;
 }
 .button{
-  color: white;
-  padding: 6px;
-  //float: right;
-  min-width: 90px;
-  border: 1px solid black;
-  background-color: #2B78E4;
+  @include button();
   margin: auto;
-  border: {
-    style: none;
-    radius: 5px;
-  };
+}
+.filter{
+  @include button();
+}
+.activeFilter{
+  @include button();
 }

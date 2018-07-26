@@ -23,7 +23,6 @@ export default function tasksReducer(state = initialState, action){
     case ACTIONS.COMPLETE_TASK:{
       return Object.assign({},state,{
         data: state.data.map((task) => {
-          console.log('her')
           if(task._id === action.payload._id){
             return Object.assign({}, task, {
               completed: action.payload.value

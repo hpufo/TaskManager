@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import moment from 'moment';
+import { connect } from 'react-redux';
 import {url} from '../config';
 import styles from '../../scss/Task.scss';
 
@@ -22,16 +23,28 @@ class Task extends Component{
       .then((response) => console.log('deleted'))       //Todo
       .catch((e) => console.log('problem deleting'));   //Todo
   }
+  getStyle(){
+    if(this.props.task.difference < 0){
+      return styles.pastDue;
+    }
+    else if(this.props.task.difference === 0){
+      return styles.dueToday;
+    }
+    else if(this.props.task.difference > 0){
+      return styles.dueLater;
+    }
+    return styles.task;
+  }
   render(){
     let {completed,name,description,due} = this.props.task;
     return (
-      <div className={styles.task}>
+      <div className={this.getStyle()}>
         <div className={styles.top}>
-          <input type='checkbox' checked={completed}/>
-          <span onClick={this.toggleDescription}>
+          <div className={styles.checkbox}><input type='checkbox' checked={completed}/></div>
+          <div className={styles.clickable} onClick={this.toggleDescription}>
             <label className={styles.name}>{name}</label>
             <label className={styles.due}>{moment(due).format('MM/DD/YYYY')}</label>
-          </span>
+          </div>
           <div className={styles.remove} onClick={this.deleteTask}>X</div>
         </div>
         {this.state.showDescription ? <p className={styles.description}>{description}</p>:<p/>}

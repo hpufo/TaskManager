@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import Task from './Task';
+import styles from '../../scss/TaskList.scss';
 
 let initialFilterState = {
   filterCompleted: false,
@@ -65,15 +66,16 @@ class TaskList extends Component {
     this.setState(initialFilterState);
   }
   render() {
+    let {filterDueToday,filterDueLater,filterPastDue,filterCompleted} = this.state;
     return (
       <div>
         <div>
           <h2>Filter</h2>
-          <button onClick={this.dueTodayToggle}>Due Today</button>
-          <button onClick={this.dueLaterToggle}>Due Tomorrow</button>
-          <button onClick={this.pastDueToggle}>Past Due</button>
-          <button onClick={this.completedToggle}>Completed</button>
-          <button onClick={this.clearFilters}>Clear Filters</button>
+          <button className={filterDueToday ? styles.activeFilter:styles.filter} onClick={this.dueTodayToggle}>Due Today</button>
+          <button className={filterDueLater ? styles.activeFilter:styles.filter} onClick={this.dueLaterToggle}>Due Tomorrow</button>
+          <button className={filterPastDue ? styles.activeFilter:styles.filter} onClick={this.pastDueToggle}>Past Due</button>
+          <button className={filterCompleted ? styles.activeFilter:styles.filter} onClick={this.completedToggle}>Completed</button>
+          <button className={styles.filter} onClick={this.clearFilters}>Clear Filters</button>
         </div>
         {this.renderTasks()}
       </div>

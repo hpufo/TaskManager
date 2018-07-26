@@ -1,12 +1,49 @@
-.task{
+@mixin task($color: white){
+  position: relative;
   max-width: 300px;
   margin: auto;
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1);
+  background-color: $color; 
+}
+
+.task{
+  @include task();
+}
+.pastDue{
+  @include task(red);
+}
+.dueToday{
+  @include task(yellow);
+}
+.dueLater{
+  @include task(green);
+}
+.checkbox{
+  display: inline-block;
+  position: absolute;
+  left: 0;
+}
+.clickable{
+  display: inline-block;
+  width: 80%;
+  &:hover {
+    cursor: pointer;
+  }
 }
 .top{}
-.name{}
-.due{}
+.name{
+  &:hover {
+    cursor: pointer;
+  }
+}
+.due{
+  &:hover {
+    cursor: pointer;
+  }
+}
 .description{}
 .remove{
   display: inline-block;
+  position: absolute;
+  right: 0;
 }
