@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import DatePicker from 'react-datepicker';
 import { connect } from 'react-redux';
 import {addTask} from '../actions/taskActions';
-import styles from '../../scss/TaskForm.scss';
+import {DumbTaskForm} from './DumbTaskForm';
 
 const initialState = {
   name: '',
@@ -44,27 +43,13 @@ class TaskForm extends Component {
     });
   }
   render() {
-    let {name,due,description} = this.state;
-    return (
-      <form className={styles.taskForm} onSubmit={this.handleSubmit}>
-        <div className={styles.taskName}>
-          <label className={styles.formLabel}>Task Name:</label>
-          <input type='text' className={styles.name} value={name} onChange={this.handleNameChange}/>
-        </div>
-        <div className={styles.dueDate}>
-          <label className={styles.formLabel}>Due Date:</label>
-          <DatePicker
-            selected={due}
-            onChange={this.handleDate}
-            className={styles.date}
-            dateFormat='MM/DD/YYYY'
-          />
-        </div>
-        <label className={styles.formLabel}>Description:</label>
-        <textarea className={styles.description} onChange={this.handleDescriptionChange} value={description}></textarea>
-        <input type='submit' className={styles.button} value='Add Task' />
-      </form>
-    );
+    return <DumbTaskForm 
+              form={this.state}
+              handleSubmit={this.handleSubmit}
+              handleDate={this.handleDate}
+              handleNameChange={this.handleNameChange}
+              handleDescriptionChange={this.handleDescriptionChange}
+            />;
   }
 }
 function mapDispatchToProps(dispatch){

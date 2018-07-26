@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import moment from 'moment';
-import Task from './Task';
-import styles from '../../scss/TaskList.scss';
+import { connect } from 'react-redux';
+import {getTasks} from '../actions/taskActions';
+import {DumbTaskList} from './DumbTaskList';
 
 let initialFilterState = {
   filterCompleted: false,
@@ -15,34 +15,8 @@ class TaskList extends Component {
     super(props);
     this.state = initialFilterState;
   }
-  applyFilters(tasks){
-    return tasks.filter((task) => {
-      //Gets the difference between the due date and today and adds it to the object for later use
-      task.difference = Math.ceil(moment(task.due).diff(moment(), 'days', true));
-
-      if(this.state.filterDueToday && this.state.filterDueLater){
-        return task.difference <= 0;
-      }
-      else if(this.state.filterDueToday){
-        return task.difference === 0;
-      }
-      else if(this.state.filterDueLater){
-        return task.difference === 1;
-      }
-      else if(this.state.filterCompleted){
-        return task.completed;
-      }
-      else if(this.state.filterPastDue){
-        return task.difference < 0;
-      }
-      else{
-        return true;
-      }
-    });
-  }
-  renderTasks(){
-    let filtedData = this.applyFilters(this.props.data)
-    return filtedData.length > 1 ? filtedData.map((task, index) => <Task task={task} index={index} key={index}/>):<p>No tasks</p>;  //May not neeed to pass the index
+  componentDidMount(){
+    this.props.loadTasks();
   }
   completedToggle = () => {
     this.setState(Object.assign({},initialFilterState,{filterCompleted: !this.state.filterCompleted}));
@@ -66,22 +40,25 @@ class TaskList extends Component {
     this.setState(initialFilterState);
   }
   render() {
-    let {filterDueToday,filterDueLater,filterPastDue,filterCompleted} = this.state;
-    return (
-      <div>
-        <div>
-          <h2>Filters:</h2>
-          <button className={filterDueToday ? styles.activeFilter:styles.filter} onClick={this.dueTodayToggle}>Due Today</button>
-          <button className={filterDueLater ? styles.activeFilter:styles.filter} onClick={this.dueLaterToggle}>Due Tomorrow</button>
-          <button className={filterPastDue ? styles.activeFilter:styles.filter} onClick={this.pastDueToggle}>Past Due</button>
-          <button className={filterCompleted ? styles.activeFilter:styles.filter} onClick={this.completedToggle}>Completed</button>
-          <button className={styles.filter} onClick={this.clearFilters}>Clear Filters</button>
-        </div>
-        <h2>Tasks:</h2>
-        {this.renderTasks()}
-      </div>
-    );
+    return <DumbTaskList 
+              filters={this.state}
+              data={this.props.tasks}
+              dueTodayToggle={this.dueTodayToggle}
+              dueLaterToggle={this.dueLaterToggle}
+              pastDueToggle={this.pastDueToggle}
+              completedToggle={this.completedToggle}
+              clearFilters={this.clearFilters}
+            />
   }
 }
-
-export default TaskList;
+function mapDispatchToProps(dispatch){
+  return{
+    loadTasks: () => {dispatch(getTasks())}
+  }
+}
+function mapStateToProps(state){
+  return {
+    tasks: state.tasks.data
+  };
+}
+export default connect(mapStateToProps,mapDispatchToProps)(TaskList);

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import moment from 'moment';
 import { connect } from 'react-redux';
 import {deleteTask, toggleComplete} from '../actions/taskActions';
-import styles from '../../scss/Task.scss';
+import {DumbTask} from './DumbTask';
 
 class Task extends Component{
   constructor(props){
@@ -24,33 +23,14 @@ class Task extends Component{
   deleteItem = () => {
     this.props.dispatch(deleteTask(this.props.task._id));
   }
-  getStyle(){
-    if(this.props.task.difference < 0){
-      return styles.pastDue;
-    }
-    else if(this.props.task.difference === 0){
-      return styles.dueToday;
-    }
-    else if(this.props.task.difference > 0){
-      return styles.dueLater;
-    }
-    return styles.task;
-  }
   render(){
-    let {completed,name,description,due} = this.props.task;
-    return (
-      <div className={this.getStyle()}>
-        <div className={styles.top}>
-          <div className={styles.checkbox}><input type='checkbox' onChange={this.handleCheckBox} checked={completed}/></div>
-          <div className={styles.clickable} onClick={this.toggleDescription}>
-            <label className={styles.name}>{name}</label>
-            <label className={styles.due}>{moment(due).format('MM/DD/YYYY')}</label>
-          </div>
-          <div className={styles.remove} onClick={this.deleteItem}>X</div>
-        </div>
-        {this.state.showDescription ? <p className={styles.description}>{description}</p>:<p/>}
-      </div>
-    );
+    let task = Object.assign({},this.props.task, this.state);
+    return <DumbTask
+              task={task}
+              deleteItem={this.deleteItem}
+              toggleDescription={this.toggleDescription}
+              handleCheckBox={this.handleCheckBox}
+            />;
   }
 }
 /*
