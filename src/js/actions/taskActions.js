@@ -9,7 +9,9 @@ export function getTasks(){
       .then((res) => {
         dispatch({type: ACTIONS.RECIEVE_TASKS, payload: res.data});
       })
-      .catch((e) => {})
+      .catch((e) => {
+        console.log(e.message);
+      })
   }
 }
 export function addTask(obj){
@@ -18,16 +20,20 @@ export function addTask(obj){
       .then((res) => {
         dispatch({type: ACTIONS.ADD_TASK, payload: res.data});
       })
-      .catch(e => {});
+      .catch((e) => {
+        console.log(e.message);
+      });
   }
 }
-export function completeTask(_id, value){
+export function toggleComplete(_id, value){
   return function(dispatch){
     axios.put(url+'/'+_id, {completed: value})
       .then((res) => {
-        dispatch({type: ACTIONS.COMPLETE_TASK, payload: {_id: _id, value: value}});
+        dispatch({type: ACTIONS.TOGGLE_COMPLETE, payload: {_id: _id, value: value}});
       })
-      .catch();
+      .catch((e) => {
+        console.log(e.message);
+      });
   }
 }
 export function deleteTask(_id){
@@ -36,6 +42,8 @@ export function deleteTask(_id){
       .then((res) => {
         dispatch({type: ACTIONS.DELETE_TASK, payload: _id});
       })
-      .catch();
+      .catch((e) => {
+        console.log(e.message);
+      });
   }
 }

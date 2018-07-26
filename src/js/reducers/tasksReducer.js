@@ -20,7 +20,7 @@ export default function tasksReducer(state = initialState, action){
         ]
       });
     }
-    case ACTIONS.COMPLETE_TASK:{
+    case ACTIONS.TOGGLE_COMPLETE:{
       return Object.assign({},state,{
         data: state.data.map((task) => {
           if(task._id === action.payload._id){

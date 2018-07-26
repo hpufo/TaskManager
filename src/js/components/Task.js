@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import moment from 'moment';
 import { connect } from 'react-redux';
-import {url} from '../config';
+import {deleteTask, toggleComplete} from '../actions/taskActions';
 import styles from '../../scss/Task.scss';
 
 class Task extends Component{
@@ -12,16 +11,18 @@ class Task extends Component{
       showDescription: false,
     };
   }
+  handleCheckBox = (event) => {
+    //value will be either ture or false
+    let value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
+    this.props.dispatch(toggleComplete(this.props.task._id, value));
+  }
   toggleDescription = () => {
     this.setState({
       showDescription: !this.state.showDescription
     });
   }
-  deleteTask = () => {
-    console.log(this.props.task._id);
-    axios.delete(url+'/'+this.props.task._id)
-      .then((response) => console.log('deleted'))       //Todo
-      .catch((e) => console.log('problem deleting'));   //Todo
+  deleteItem = () => {
+    this.props.dispatch(deleteTask(this.props.task._id));
   }
   getStyle(){
     if(this.props.task.difference < 0){
@@ -40,17 +41,22 @@ class Task extends Component{
     return (
       <div className={this.getStyle()}>
         <div className={styles.top}>
-          <div className={styles.checkbox}><input type='checkbox' checked={completed}/></div>
+          <div className={styles.checkbox}><input type='checkbox' onChange={this.handleCheckBox} checked={completed}/></div>
           <div className={styles.clickable} onClick={this.toggleDescription}>
             <label className={styles.name}>{name}</label>
             <label className={styles.due}>{moment(due).format('MM/DD/YYYY')}</label>
           </div>
-          <div className={styles.remove} onClick={this.deleteTask}>X</div>
+          <div className={styles.remove} onClick={this.deleteItem}>X</div>
         </div>
         {this.state.showDescription ? <p className={styles.description}>{description}</p>:<p/>}
       </div>
     );
   }
 }
-
-export default Task;
+/*
+function mapStateToProps(state, ownProps){
+  return {
+    tasks: state.tasks.data.find((task) => task._id === ownProps.task._id)
+  };
+}//*/
+export default connect()(Task);

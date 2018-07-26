@@ -42,7 +42,7 @@ class TaskList extends Component {
   }
   renderTasks(){
     let filtedData = this.applyFilters(this.props.data)
-    return filtedData.map((task, index) => <Task task={task} key={index}/>);
+    return filtedData.length > 1 ? filtedData.map((task, index) => <Task task={task} index={index} key={index}/>):<p>No tasks</p>;  //May not neeed to pass the index
   }
   completedToggle = () => {
     this.setState(Object.assign({},initialFilterState,{filterCompleted: !this.state.filterCompleted}));
@@ -70,13 +70,14 @@ class TaskList extends Component {
     return (
       <div>
         <div>
-          <h2>Filter</h2>
+          <h2>Filters:</h2>
           <button className={filterDueToday ? styles.activeFilter:styles.filter} onClick={this.dueTodayToggle}>Due Today</button>
           <button className={filterDueLater ? styles.activeFilter:styles.filter} onClick={this.dueLaterToggle}>Due Tomorrow</button>
           <button className={filterPastDue ? styles.activeFilter:styles.filter} onClick={this.pastDueToggle}>Past Due</button>
           <button className={filterCompleted ? styles.activeFilter:styles.filter} onClick={this.completedToggle}>Completed</button>
           <button className={styles.filter} onClick={this.clearFilters}>Clear Filters</button>
         </div>
+        <h2>Tasks:</h2>
         {this.renderTasks()}
       </div>
     );

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import {url} from '../config';
 import TaskForm from './TaskForm';
 import TaskList from './TaskList';
+import { connect } from 'react-redux';
+import {getTasks} from '../actions/taskActions';
 import styles from '../../scss/App.scss';
 
 class App extends Component {
@@ -11,25 +11,25 @@ class App extends Component {
     this.state = {data: []};
   }
   componentDidMount(){
-    this.fetchData()
-      .then(data => {
-        this.setState({data: data});
-      })
-      .catch(); //Handle error
-  }
-  fetchData(){
-    return axios.get(url)
-      .then(res => res.data)
-      .catch(); //throw maybe?
+    this.props.loadTasks();
   }
   render() {
     return (
       <div className={styles.App}>
         <TaskForm />
-        <TaskList data={this.state.data}/>
+        <TaskList data={this.props.tasks}/>
       </div>
     );
   }
 }
-
-export default App;
+function mapDispatchToProps(dispatch){
+  return{
+    loadTasks: () => {dispatch(getTasks())}
+  }
+}
+function mapStateToProps(state){
+  return {
+    tasks: state.tasks.data
+  };
+}
+export default connect(mapStateToProps,mapDispatchToProps)(App);

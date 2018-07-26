@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
+import { connect } from 'react-redux';
+import {addTask} from '../actions/taskActions';
 import styles from '../../scss/TaskForm.scss';
-import {url} from '../config';
 
 const initialState = {
   name: '',
@@ -22,16 +22,11 @@ class TaskForm extends Component {
     let data = {
       completed: false,
       name: name,
-      due: due.format('YYYY-MM-DD'),
+      due: due,
       description: description
     };
     
-    axios.post(url, data)
-      .then((res) => {
-        //Todo: output message
-        this.setState(initialState);
-      })
-      .catch(e => console.log(e));
+    this.props.addTask(data);
   }
   handleDate = (date) => {
     this.setState({
@@ -72,5 +67,14 @@ class TaskForm extends Component {
     );
   }
 }
-
-export default TaskForm;
+function mapDispatchToProps(dispatch){
+  return{
+    addTask: (obj) => {dispatch(addTask(obj))}
+  }
+}
+function mapStateToProps(state){
+  return {
+    tasks: state.tasks.data
+  };
+}
+export default connect(mapStateToProps,mapDispatchToProps)(TaskForm);
