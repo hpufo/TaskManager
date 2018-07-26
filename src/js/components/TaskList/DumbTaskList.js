@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
-import Task from './Task';
-import styles from '../../scss/TaskList.scss';
+import Task from '../Task/Task';
+import styles from './TaskList.scss';
 
 function applyFilters(props){
   return props.data.filter((task) => {

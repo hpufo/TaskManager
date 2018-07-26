@@ -1,7 +1,7 @@
 import React from 'react';
-import TaskForm from './TaskForm';
-import TaskList from './TaskList';
-import styles from '../../scss/App.scss';
+import TaskForm from '../TaskForm/TaskForm';
+import TaskList from '../TaskList/TaskList';
+import styles from './App.scss';
 
 export const App = (props) => {
   return (

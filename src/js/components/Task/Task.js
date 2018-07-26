@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {deleteTask, toggleComplete} from '../actions/taskActions';
+import {deleteTask, toggleComplete} from '../../actions/taskActions';
 import {DumbTask} from './DumbTask';
 
 class Task extends Component{

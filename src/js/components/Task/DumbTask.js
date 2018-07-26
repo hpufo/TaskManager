@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import styles from '../../scss/Task.scss';
+import styles from './Task.scss';
 
 function getStyle(difference){
   if(difference < 0){

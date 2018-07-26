@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {getTasks} from '../actions/taskActions';
+import {getTasks} from '../../actions/taskActions';
 import {DumbTaskList} from './DumbTaskList';
 
 let initialFilterState = {
