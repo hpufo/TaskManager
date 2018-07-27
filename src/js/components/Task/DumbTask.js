@@ -1,7 +1,8 @@
 import React from 'react';
 import moment from 'moment';
+import PropTypes from 'prop-types';
 import styles from './Task.scss';
-//TODO PropTypes
+
 function getStyle(difference){
   if(difference < 0){
     return styles.pastDue;
@@ -31,3 +32,16 @@ export const DumbTask = (props) => {
   </div>
   );
 }
+
+DumbTask.propTypes = {
+  task: PropTypes.shape({
+    completed: PropTypes.bool.isRequired,
+    name: PropTypes.string.isRequired,
+    due: PropTypes.any.isRequired,
+    description: PropTypes.string.isRequired,
+    difference: PropTypes.number
+  }).isRequired,
+  deleteItem: PropTypes.func.isRequired,
+  toggleDescription: PropTypes.func.isRequired,
+  handleCheckBox: PropTypes.func.isRequired
+};

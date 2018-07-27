@@ -1,8 +1,9 @@
 import React from 'react';
 import moment from 'moment';
+import PropTypes from 'prop-types';
 import Task from '../Task/Task';
 import styles from './TaskList.scss';
-//TODO PropTypes
+
 function applyFilters(props){
   return props.data.filter((task) => {
     let {filterDueToday,filterDueLater,filterPastDue,filterCompleted} = props.filters;
@@ -51,3 +52,23 @@ export const DumbTaskList = (props) => {
     </div>
   );
 }
+
+DumbTaskList.propTypes = {
+  filters: PropTypes.shape({
+    filterDueToday: PropTypes.bool.isRequired,
+    filterDueLater: PropTypes.bool.isRequired,
+    filterPastDue: PropTypes.bool.isRequired,
+    filterCompleted: PropTypes.bool.isRequired
+  }).isRequired,
+  data: PropTypes.arrayOf(PropTypes.shape({
+    completed: PropTypes.bool.isRequired,
+    name: PropTypes.string.isRequired,
+    due: PropTypes.any.isRequired,
+    description: PropTypes.string.isRequired
+  })).isRequired,
+  dueTodayToggle: PropTypes.func.isRequired,
+  dueLaterToggle: PropTypes.func.isRequired,
+  pastDueToggle: PropTypes.func.isRequired,
+  completedToggle: PropTypes.func.isRequired,
+  clearFilters: PropTypes.func.isRequired,
+};

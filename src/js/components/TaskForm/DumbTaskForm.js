@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
 import styles from './TaskForm.scss';
-//TODO PropTypes
+
 export const DumbTaskForm = (props) => {
   let {name,due,description} = props.form;
     return (
@@ -25,3 +26,15 @@ export const DumbTaskForm = (props) => {
       </form>
     );
 }
+
+DumbTaskForm.propTypes = {
+  form: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    due: PropTypes.any.isRequired,
+    description: PropTypes.string.isRequired
+  }).isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  handleDate: PropTypes.func.isRequired,
+  handleNameChange: PropTypes.func.isRequired,
+  handleDescriptionChange: PropTypes.func.isRequired
+};
