@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import styles from './Task.scss';
-
+//TODO PropTypes
 function getStyle(difference){
   if(difference < 0){
     return styles.pastDue;

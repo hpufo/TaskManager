@@ -2,13 +2,13 @@ import React from 'react';
 import moment from 'moment';
 import Task from '../Task/Task';
 import styles from './TaskList.scss';
-
+//TODO PropTypes
 function applyFilters(props){
   return props.data.filter((task) => {
     let {filterDueToday,filterDueLater,filterPastDue,filterCompleted} = props.filters;
+    let today = moment();
     //Gets the difference between the due date and today and adds it to the object for later use
-    task.difference = Math.ceil(moment(task.due).diff(moment(), 'days', true));
-
+    task.difference = Math.round(moment(task.due).diff(today, 'days', true));
     if(filterDueToday && filterDueLater){
       return task.difference <= 0;
     }

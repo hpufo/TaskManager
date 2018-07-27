@@ -1,7 +1,7 @@
 import React from 'react';
 import DatePicker from 'react-datepicker';
 import styles from './TaskForm.scss';
-
+//TODO PropTypes
 export const DumbTaskForm = (props) => {
   let {name,due,description} = props.form;
     return (
