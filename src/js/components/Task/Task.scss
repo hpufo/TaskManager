@@ -5,17 +5,20 @@
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1);
   background-color: $color; 
 }
-
-.task{
+/*I am not applying the hashes to these for testing purposes. 
+I couldn't figure out how to get jest to work with css modules, 
+and I didn't want to spend too much time trying to figure it out.
+*/
+:global(.task){
   @include task();
 }
-.pastDue{
+:global(.pastDue){
   @include task(red);
 }
-.dueToday{
+:global(.dueToday){
   @include task(yellow);
 }
-.dueLater{
+:global(.dueLater){
   @include task(green);
 }
 .checkbox{

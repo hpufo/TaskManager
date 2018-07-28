@@ -5,15 +5,15 @@ import styles from './Task.scss';
 
 function getStyle(difference){
   if(difference < 0){
-    return styles.pastDue;
+    return 'pastDue';
   }
   else if(difference === 0){
-    return styles.dueToday;
+    return 'dueToday';
   }
   else if(difference > 0){
-    return styles.dueLater;
+    return 'dueLater';
   }
-  return styles.task;
+  return 'task';
 }
 
 export const DumbTask = (props) => {
