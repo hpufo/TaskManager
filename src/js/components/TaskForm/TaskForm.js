@@ -26,6 +26,7 @@ class TaskForm extends Component {
     };
     
     this.props.addTask(data);
+    this.setState(initialState);
   }
   handleDate = (date) => {
     this.setState({
