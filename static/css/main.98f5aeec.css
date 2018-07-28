@@ -1,0 +1,133 @@
+.TaskForm__taskForm___2bVpC {
+  display: flex;
+  flex-direction: column;
+  max-width: 200px;
+  margin: auto; }
+
+.TaskForm__taskName___1fnaU, .TaskForm__dueDate___126cc {
+  display: flex;
+  flex-direction: row; }
+
+.TaskForm__name___3KTjI {
+  width: 55%; }
+
+.TaskForm__date___3nXYL {
+  display: inline-block;
+  width: 75px; }
+
+.TaskForm__description___3jJ-z {
+  height: 100px; }
+
+.TaskForm__button___zqftt {
+  color: white;
+  padding: 6px;
+  min-width: 90px;
+  border: 1px solid black;
+  background-color: #2B78E4;
+  border-style: none;
+  border-radius: 5px;
+  margin: auto; }
+
+.TaskForm__filter___ypCgk {
+  color: white;
+  padding: 6px;
+  min-width: 90px;
+  border: 1px solid black;
+  background-color: #2B78E4;
+  border-style: none;
+  border-radius: 5px; }
+
+.TaskForm__activeFilter___28Tf0 {
+  color: white;
+  padding: 6px;
+  min-width: 90px;
+  border: 1px solid black;
+  background-color: #2B78E4;
+  border-style: none;
+  border-radius: 5px; }
+/*I am not applying the hashes to these for testing purposes. 
+I couldn't figure out how to get jest to work with css modules, 
+and I didn't want to spend too much time trying to figure it out.
+*/
+.task {
+  position: relative;
+  max-width: 300px;
+  margin: auto;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  background-color: white; }
+
+.pastDue {
+  position: relative;
+  max-width: 300px;
+  margin: auto;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  background-color: red; }
+
+.dueToday {
+  position: relative;
+  max-width: 300px;
+  margin: auto;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  background-color: yellow; }
+
+.dueLater {
+  position: relative;
+  max-width: 300px;
+  margin: auto;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  background-color: green; }
+
+.Task__checkbox___ngRMf {
+  display: inline-block;
+  position: absolute;
+  left: 0; }
+
+.Task__clickable___1DNDn {
+  display: inline-block;
+  width: 80%; }
+  .Task__clickable___1DNDn:hover {
+    cursor: pointer; }
+
+.Task__name___109Po:hover {
+  cursor: pointer; }
+
+.Task__due___2cYtT:hover {
+  cursor: pointer; }
+
+.Task__remove___2Utiw {
+  display: inline-block;
+  position: absolute;
+  right: 0; }
+.TaskList__filter___DUYiU {
+  color: white;
+  padding: 6px;
+  min-width: 90px;
+  border: 1px solid black;
+  background-color: green;
+  border-style: none;
+  border-radius: 5px; }
+
+.TaskList__activeFilter___1eNvD {
+  color: white;
+  padding: 6px;
+  min-width: 90px;
+  border: 1px solid black;
+  background-color: red;
+  border-style: none;
+  border-radius: 5px; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif; }
+
+html, body {
+  height: 100%; }
+
+#root {
+  height: 100%; }
+
+.App__App___12ZcH {
+  text-align: center; }
+
+/*# sourceMappingURL=main.98f5aeec.css.map*/
