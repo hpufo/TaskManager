@@ -11,7 +11,7 @@ function applyFilters(props){
     //Gets the difference between the due date and today and adds it to the object for later use
     task.difference = Math.ceil(moment(task.due).startOf('day').diff(today.startOf('day'), 'days', true));
     if(filterDueToday && filterDueLater){
-      return task.difference >= 0;
+      return task.difference === 0 || task.difference === 1;
     }
     else if(filterDueToday){
       return task.difference === 0;

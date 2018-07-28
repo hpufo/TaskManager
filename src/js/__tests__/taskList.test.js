@@ -3,7 +3,6 @@ import moment from 'moment';
 import { shallow } from 'enzyme';
 import {DumbTaskList} from '../components/TaskList/DumbTaskList';
 import Task from '../components/Task/Task';
-import styles from '../components/Task/TaskList.scss';
 
 const defaultFilters = {
   filterDueToday: false,
