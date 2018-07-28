@@ -2,6 +2,7 @@
   "name": "task-manager",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://hpufo.github.io/TaskManager",
   "dependencies": {
     "autoprefixer": "7.1.6",
     "axios": "^0.18.0",
@@ -29,6 +30,7 @@
     "fetch-mock": "^6.5.2",
     "file-loader": "1.1.5",
     "fs-extra": "3.0.1",
+    "gh-pages": "^1.2.0",
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
     "jest-enzyme": "^6.0.2",
@@ -59,6 +61,8 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "jest",
