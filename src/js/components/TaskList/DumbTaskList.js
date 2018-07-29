@@ -4,6 +4,11 @@ import PropTypes from 'prop-types';
 import Task from '../Task/Task';
 import styles from './TaskList.scss';
 
+/**
+ * @description list the tasks with or ithought 
+ * @param {object} props 
+ * @returns {Array} the array after it has been filterd 
+ */
 function applyFilters(props){
   return props.data.filter((task) => {
     let {filterDueToday,filterDueLater,filterPastDue,filterCompleted} = props.filters;
@@ -30,11 +35,20 @@ function applyFilters(props){
     }
   });
 }
+/**
+ * @description list the tasks after it has brrn filtered
+ * @param {object} props 
+ * @returns {Array} the array after it has been filterd 
+ */
 function renderTasks(props){
   let filtedData = applyFilters(props);
+
   return filtedData.length >= 1 ? filtedData.map((task, index) => <Task task={task} index={index} key={index}/>):<p>{props.loading ? 'Loading...' : 'No tasks'}</p>;  //May not neeed to pass the index
 }
-
+/**
+ * renders the filters and tasks
+ * @param {object} props 
+ */
 export const DumbTaskList = (props) => {
   let {filterDueToday,filterDueLater,filterPastDue,filterCompleted} = props.filters;
   return (
@@ -52,7 +66,9 @@ export const DumbTaskList = (props) => {
     </div>
   );
 }
-
+/**
+ * The props thes conponent is expecting
+ */
 DumbTaskList.propTypes = {
   filters: PropTypes.shape({
     filterDueToday: PropTypes.bool.isRequired,

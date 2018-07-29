@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
 import styles from './TaskForm.scss';
 
+/**
+ * @description renders the task form. 
+ * @param {object} props 
+ */
 export const DumbTaskForm = (props) => {
   let {name,due,description} = props.form;
     return (
@@ -26,7 +30,9 @@ export const DumbTaskForm = (props) => {
       </form>
     );
 }
-
+/** 
+* @description Schema this component is expecting
+*/
 DumbTaskForm.propTypes = {
   form: PropTypes.shape({
     name: PropTypes.string.isRequired,
