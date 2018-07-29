@@ -32,7 +32,7 @@ function applyFilters(props){
 }
 function renderTasks(props){
   let filtedData = applyFilters(props);
-  return filtedData.length >= 1 ? filtedData.map((task, index) => <Task task={task} index={index} key={index}/>):<p>No tasks</p>;  //May not neeed to pass the index
+  return filtedData.length >= 1 ? filtedData.map((task, index) => <Task task={task} index={index} key={index}/>):<p>{props.loading ? 'Loading...' : 'No tasks'}</p>;  //May not neeed to pass the index
 }
 
 export const DumbTaskList = (props) => {
@@ -66,6 +66,7 @@ DumbTaskList.propTypes = {
     due: PropTypes.any.isRequired,
     description: PropTypes.string.isRequired
   })).isRequired,
+  loading: PropTypes.bool,
   dueTodayToggle: PropTypes.func.isRequired,
   dueLaterToggle: PropTypes.func.isRequired,
   pastDueToggle: PropTypes.func.isRequired,

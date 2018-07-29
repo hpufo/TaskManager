@@ -1,15 +1,21 @@
-import React from 'react';
-import TaskForm from '../TaskForm/TaskForm';
-import TaskList from '../TaskList/TaskList';
-import styles from './App.scss';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import {setMessage} from '../../actions/taskActions';
+import {DumbApp} from './DumbApp';
 
-export const App = (props) => {
-  return (
-    <div className={styles.App}>
-      <TaskForm />
-      <TaskList />
-    </div>
-  );
+class App extends Component {
+  render() {
+    return <DumbApp message={this.props.message} clearMessage={this.props.clearMessage}/>
+  }
 }
-
-export default App;
+function mapDispatchToProps(dispatch){
+  return{
+    clearMessage: () => {dispatch(setMessage(''))}
+  }
+}
+function mapStateToProps(state){
+  return {
+    message: state.tasks.message,
+  };
+}
+export default connect(mapStateToProps,mapDispatchToProps)(App);

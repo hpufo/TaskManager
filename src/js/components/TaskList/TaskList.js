@@ -43,6 +43,7 @@ class TaskList extends Component {
     return <DumbTaskList 
               filters={this.state}
               data={this.props.tasks}
+              loading={this.props.loading}
               dueTodayToggle={this.dueTodayToggle}
               dueLaterToggle={this.dueLaterToggle}
               pastDueToggle={this.pastDueToggle}
@@ -58,7 +59,8 @@ function mapDispatchToProps(dispatch){
 }
 function mapStateToProps(state){
   return {
-    tasks: state.tasks.data
+    tasks: state.tasks.data,
+    loading: state.tasks.loading
   };
 }
 export default connect(mapStateToProps,mapDispatchToProps)(TaskList);

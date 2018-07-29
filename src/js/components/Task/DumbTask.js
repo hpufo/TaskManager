@@ -24,7 +24,7 @@ export const DumbTask = (props) => {
       <div className={styles.checkbox}><input type='checkbox' onChange={props.handleCheckBox} checked={completed}/></div>
       <div className={styles.clickable} onClick={props.toggleDescription}>
         <label className={styles.name}>{name}</label>
-        <label className={styles.due}>{moment(due).format('MM/DD/YYYY')}</label>
+        <label className={styles.due}>due: {moment(due).format('MM/DD/YYYY')}</label>
       </div>
       <div className={styles.remove} onClick={props.deleteItem}>X</div>
     </div>

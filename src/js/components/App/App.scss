@@ -7,9 +7,19 @@
 html, body{
   height: 100%;
 }
+body{
+  padding: 1%;
+}
 :global(#root){
   height: 100%;
 }
 .App {
   text-align: center;
+}
+.message{
+  color: red;
+  font-weight: bold;
+  &:hover {
+    cursor: pointer;
+  }
 }

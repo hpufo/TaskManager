@@ -1,6 +1,10 @@
 import {ACTIONS} from '../actions/actions';
 
-const initialState = {data: []};
+const initialState = {
+  loading: false,
+  message: '',
+  data: []
+};
 
 export default function tasksReducer(state = initialState, action){
   switch(action.type){
@@ -36,6 +40,12 @@ export default function tasksReducer(state = initialState, action){
       return Object.assign({}, state,{
         data: state.data.filter((task) => task._id !== action.payload)
       });
+    }
+    case ACTIONS.SET_LOADING:{
+      return Object.assign({}, state, {loading: action.payload});
+    }
+    case ACTIONS.SET_MESSAGE:{
+      return Object.assign({}, state, {message: action.payload});
     }
     default:
       return state;

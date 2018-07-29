@@ -13,33 +13,38 @@ and I didn't want to spend too much time trying to figure it out.
   @include task();
 }
 :global(.pastDue){
-  @include task(red);
+  @include task(#f71e1e94);
 }
 :global(.dueToday){
-  @include task(yellow);
+  @include task(#ffff006e);
 }
 :global(.dueLater){
-  @include task(green);
+  @include task(#00800080);
 }
 .checkbox{
   display: inline-block;
   position: absolute;
   left: 0;
+  top: 30%;
 }
 .clickable{
   display: inline-block;
-  width: 80%;
+  padding: 0 10px 0 10px;
+  width: 100%;
   &:hover {
     cursor: pointer;
   }
 }
 .top{}
 .name{
+  display: block;
   &:hover {
     cursor: pointer;
   }
 }
 .due{
+  display: inline-block;
+  width: 120px;
   &:hover {
     cursor: pointer;
   }
@@ -49,4 +54,7 @@ and I didn't want to spend too much time trying to figure it out.
   display: inline-block;
   position: absolute;
   right: 0;
+  &:hover {
+    cursor: pointer;
+  }
 }
