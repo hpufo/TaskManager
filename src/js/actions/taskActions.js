@@ -10,7 +10,6 @@ export function getTasks(){
       .then((res) => {
         dispatch({type: ACTIONS.RECIEVE_TASKS, payload: res.data});
         dispatch(setLoading(false));
-        dispatch(setMessage('Something went wrong with the API check the console for a detailed message'));
       })
       .catch((e) => {
         dispatch(setLoading(false));
