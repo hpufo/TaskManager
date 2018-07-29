@@ -79,6 +79,7 @@ export function deleteTask(_id){
 /**
  * @description sets loading
  * @param {boolean} bool is data loading?
+ * @returns action object
  */
 export function setLoading(bool){
   return {type: ACTIONS.SET_LOADING, payload: bool}
@@ -86,6 +87,7 @@ export function setLoading(bool){
 /**
  * @description sets the messages
  * @param {string} msg message for the user
+ * @returns action object
  */
 export function setMessage(msg){
   return {type: ACTIONS.SET_MESSAGE, payload: msg}
