@@ -14,4 +14,4 @@ The backend service is my heroku deployment, but you can use your own by editing
 
 Note: docker container isn't working
 
-Technology used: React, Redux, SASS, Jest, Enzyme, AXIOS, CSS-Modules,
+Technology used: React, Redux, SASS, Jest, Enzyme, Axios, CSS-Modules, GH-Pages
