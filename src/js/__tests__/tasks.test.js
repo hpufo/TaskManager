@@ -1,11 +1,12 @@
 import React from 'react'
-import Enzyme, { shallow } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16';
+import { shallow } from 'enzyme'
 import {DumbTask} from '../components/Task/DumbTask';
-import styles from '../components/Task/Task.scss';
 
-Enzyme.configure({ adapter: new Adapter() });//May not need
-
+/**
+ * @description helper function for tests
+ * @param {number} difference the number of days between today and the due date
+ * @returns returns an object containing props and the wrapper
+ */
 function setup(difference = 0){
   const props = {
     deleteItem: jest.fn(),
@@ -42,5 +43,4 @@ describe('Task',() => {
     const {wrapper} = setup(1);
     expect(wrapper.find('.dueLater').exists()).toBe(true);
   });
-  //it('',() => {});
 });

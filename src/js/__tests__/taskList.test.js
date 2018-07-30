@@ -11,6 +11,11 @@ const defaultFilters = {
   filterCompleted: false
 };
 
+/**
+ * @description helper function for tests
+ * @param {object} filters object of the filter states
+ * @returns returns an object containing props and the wrapper
+ */
 function setup(filters = defaultFilters){
   const props = {
     filters: filters,
