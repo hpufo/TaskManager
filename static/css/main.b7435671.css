@@ -61,43 +61,52 @@ and I didn't want to spend too much time trying to figure it out.
   max-width: 300px;
   margin: auto;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-  background-color: red; }
+  background-color: #f71e1e94; }
 
 .dueToday {
   position: relative;
   max-width: 300px;
   margin: auto;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-  background-color: yellow; }
+  background-color: #ffff006e; }
 
 .dueLater {
   position: relative;
   max-width: 300px;
   margin: auto;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-  background-color: green; }
+  background-color: #00800080; }
 
 .Task__checkbox___ngRMf {
   display: inline-block;
   position: absolute;
-  left: 0; }
+  left: 0;
+  top: 30%; }
 
 .Task__clickable___1DNDn {
   display: inline-block;
-  width: 80%; }
+  padding: 0 10px 0 10px;
+  width: 100%; }
   .Task__clickable___1DNDn:hover {
     cursor: pointer; }
 
-.Task__name___109Po:hover {
-  cursor: pointer; }
+.Task__name___109Po {
+  display: block; }
+  .Task__name___109Po:hover {
+    cursor: pointer; }
 
-.Task__due___2cYtT:hover {
-  cursor: pointer; }
+.Task__due___2cYtT {
+  display: inline-block;
+  width: 120px; }
+  .Task__due___2cYtT:hover {
+    cursor: pointer; }
 
 .Task__remove___2Utiw {
   display: inline-block;
   position: absolute;
   right: 0; }
+  .Task__remove___2Utiw:hover {
+    cursor: pointer; }
 .TaskList__filter___DUYiU {
   color: white;
   padding: 6px;
@@ -124,10 +133,19 @@ and I didn't want to spend too much time trying to figure it out.
 html, body {
   height: 100%; }
 
+body {
+  padding: 1%; }
+
 #root {
   height: 100%; }
 
 .App__App___12ZcH {
   text-align: center; }
 
-/*# sourceMappingURL=main.98f5aeec.css.map*/
+.App__message___1oLxS {
+  color: red;
+  font-weight: bold; }
+  .App__message___1oLxS:hover {
+    cursor: pointer; }
+
+/*# sourceMappingURL=main.b7435671.css.map*/
