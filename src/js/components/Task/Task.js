@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {deleteTask, toggleComplete} from '../../actions/taskActions';
-import {DumbTask} from './DumbTask';
+import DumbTask from './DumbTask';
 
 /**
  * @description This is a smart component that handles the state and connects the dumb component to redux

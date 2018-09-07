@@ -8,42 +8,44 @@ import styles from './Task.scss';
   * @param {number} difference - The amount of days between today and the due date.
   * @returns {string} - the className that this component should have
 */
-function getStyle(difference){
-  if(difference < 0){
+function getStyle(difference) {
+  if (difference < 0) {
     return 'pastDue';
   }
-  else if(difference === 0){
+  if (difference === 0) {
     return 'dueToday';
   }
-  else if(difference > 0){
+  if (difference > 0) {
     return 'dueLater';
   }
   return 'task';
 }
 
-/** 
+/**
 * @description This component render's the task with a onClick toggle to show the description
 * @param {object} props - Props
 * @returns JSX - Returns this task
 */
-export const DumbTask = (props) => {
-  let {completed,name,due,description,difference} = props.task; //Destruct object into those variables
+const DumbTask = (props) => {
+  const {
+    completed, name, due, description, difference,
+  } = props.task; // Destruct object into those variables
   return (
-  <div className={getStyle(difference)}>
-    <div className={styles.top}>
-      <div className={styles.checkbox}><input type='checkbox' onChange={props.handleCheckBox} checked={completed}/></div>
-      <div className={styles.clickable} onClick={props.toggleDescription}>
-        <label className={styles.name}>{name}</label>
-        <label className={styles.due}>due: {moment(due).format('MM/DD/YYYY')}</label>
+    <div className={getStyle(difference)}>
+      <div className={styles.top}>
+        <div className={styles.checkbox}><input type="checkbox" onChange={props.handleCheckBox} checked={completed} /></div>
+        <div className={styles.clickable} onClick={props.toggleDescription}>
+          <label className={styles.name}>{name}</label>
+          <label className={styles.due}>due: {moment(due).format('MM/DD/YYYY')}</label>
+        </div>
+        <div className={styles.remove} onClick={props.deleteItem}>X</div>
       </div>
-      <div className={styles.remove} onClick={props.deleteItem}>X</div>
+      {props.task.showDescription ? <p className={styles.description}>{description}</p> : <p />}
     </div>
-    {props.task.showDescription ? <p className={styles.description}>{description}</p>:<p/>}
-  </div>
   );
-}
+};
 
-/** 
+/**
 * @description Schema this component is expecting
 */
 DumbTask.propTypes = {
@@ -52,9 +54,12 @@ DumbTask.propTypes = {
     name: PropTypes.string.isRequired,
     due: PropTypes.any.isRequired,
     description: PropTypes.string.isRequired,
-    difference: PropTypes.number
+    difference: PropTypes.number,
+    showDescription: PropTypes.bool.isRequired,
   }).isRequired,
   deleteItem: PropTypes.func.isRequired,
   toggleDescription: PropTypes.func.isRequired,
-  handleCheckBox: PropTypes.func.isRequired
+  handleCheckBox: PropTypes.func.isRequired,
 };
+
+export default DumbTask;

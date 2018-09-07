@@ -3,5 +3,7 @@ import thunk from 'redux-thunk';
 import allReducers from './reducers';
 
 const middleware = applyMiddleware(thunk);
-//2nd param is for a chrome plugin to track the state
+// 2nd param is for a chrome plugin to track the state
+/* eslint-disable */
 export default createStore(allReducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), middleware);
+/* eslint-enable  */

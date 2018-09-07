@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {getTasks} from '../../actions/taskActions';
-import {DumbTaskList} from './DumbTaskList';
+import DumbTaskList from './DumbTaskList';
 
 //Itial state of the filters
 let initialFilterState = {
