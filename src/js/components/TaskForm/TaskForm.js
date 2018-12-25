@@ -40,30 +40,21 @@ class TaskForm extends Component {
     this.setState(initialState);              //Clear the form
   }
   /**
+   * @description Update the state to allow user input
+   * @param {object} event the event from the onchange
+   */
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  }
+    /**
    * @description change the due state to match the user input
    * @param {*} date the date
    */
   handleDate = (date) => {
     this.setState({
       due: date
-    });
-  }
-  /**
-   * @description change the name state to match the user input
-   * @param {object} event the event from the onchange
-   */
-  handleNameChange = (event) => {
-    this.setState({
-      name: event.target.value
-    });
-  }
-  /**
-   * @description change the description to match the user input
-   * @param {object} event the event from the onchange
-   */
-  handleDescriptionChange = (event) => {
-    this.setState({
-      description: event.target.value
     });
   }
   /**
@@ -74,8 +65,7 @@ class TaskForm extends Component {
               form={this.state}
               handleSubmit={this.handleSubmit}
               handleDate={this.handleDate}
-              handleNameChange={this.handleNameChange}
-              handleDescriptionChange={this.handleDescriptionChange}
+              handleChange={this.handleChange}
             />;
   }
 }

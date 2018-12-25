@@ -13,7 +13,13 @@ export const DumbTaskForm = (props) => {
       <form className={styles.taskForm} onSubmit={props.handleSubmit}>
         <div className={styles.taskName}>
           <label className={styles.formLabel}>Task Name:</label>
-          <input type='text' className={styles.name} value={name} onChange={props.handleNameChange}/>
+          <input 
+            type='text' 
+            name='name'
+            className={styles.name}
+            value={name} 
+            onChange={props.handleChange}
+          />
         </div>
         <div className={styles.dueDate}>
           <label className={styles.formLabel}>Due Date:</label>
@@ -25,7 +31,12 @@ export const DumbTaskForm = (props) => {
           />
         </div>
         <label className={styles.formLabel}>Description:</label>
-        <textarea className={styles.description} onChange={props.handleDescriptionChange} value={description}></textarea>
+        <textarea 
+          name='description'
+          className={styles.description} 
+          onChange={props.handleChange} 
+          value={description}
+        ></textarea>
         <input type='submit' className={styles.button} value='Add Task' />
       </form>
     );
@@ -41,6 +52,5 @@ DumbTaskForm.propTypes = {
   }).isRequired,
   handleSubmit: PropTypes.func.isRequired,
   handleDate: PropTypes.func.isRequired,
-  handleNameChange: PropTypes.func.isRequired,
-  handleDescriptionChange: PropTypes.func.isRequired
+  handleChange: PropTypes.func.isRequired
 };
